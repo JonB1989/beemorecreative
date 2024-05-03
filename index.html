@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="landingPage">
+    <img src="beethree.jpg" class="logobee">
+    <h1 class="lettering">Bee Creative - Bee Creative - </h1>
+    <svg class="logoPath" viewBox="0 0 600 600">
+        <path class="mypath" stroke="none" stroke-width="5" fill="none" d="M20, 300 A1,1 0 0 1 580,300 A1,1 0 0 1 20,300 Z "></path>
+    </svg>
+</div>
+
+
+
+
+
+
+
+
+
+
+<style>
+
+    body {
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        background-color: rgb(245, 248, 235);
+    }
+
+    .landingPage {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(245, 248, 235);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logobee{
+            border-radius: 50%;
+            width: 400px;
+            position:absolute;
+            transition: .5s;
+            user-select: none;
+    }
+
+    .lettering {
+            font-size: 40px;
+            font-family: "caviar dreams";
+            position: absolute;
+            transition: linear;
+            opacity:1;
+            transition: .5s;
+            user-select: none;
+    }
+
+    .logoPath {
+            border-radius: 20px;
+            width: 600px;
+            height: 600px;
+    }
+
+
+
+    @media (max-width: 850px) {
+            .logobee {
+                width:350px;
+            }
+            .logoPath {
+                width: 500px;
+                height: 500px;
+            }   
+            .lettering {
+                font-size: 40px;
+            }   
+    }
+    @media (max-width: 700px) {
+            .logobee {
+                width:300px;
+            }
+            .logoPath {
+                width: 400px;
+                height: 400px;
+            } 
+            .lettering {
+                font-size: 35px;
+            }
+    }
+    @media (max-width: 550px) {
+            .logobee {
+                width:200px;
+            }
+            .logoPath {
+                width: 350px;
+                height: 350px;
+            } 
+            .lettering {
+                font-size: 30px;
+            }
+    }
+
+</style>
+
+
+
+<script src="https://unpkg.com/split-type"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+
+<script>
+
+
+    /*SPINNING LOGO*/
+
+
+        let mySplitText = new SplitType(".lettering");
+
+        
+        gsap.registerPlugin(MotionPathPlugin);
+        
+
+        let tl = gsap.timeline();
+
+        tl.to(".char", {
+            duration: 10,
+            ease: "none",
+            stagger:{
+                from: "end",
+                each: .42,
+                repeat:-1,
+            },
+            repeat: -1,
+            motionPath: {
+                path: ".mypath",
+                align: ".mypath",
+                alignOrigin: [0.5,0.5],
+                autoRotate: true,
+            }
+        })
+
+        let progress = tl.totalProgress();
+
+        tl.totalProgress(0.75);
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".logo", {
+            opacity:1,
+            duration: .5,
+            scrollTrigger: {
+                trigger: ".contentPage",
+                start: "top 12%",
+                end: "top 5%",
+                scrub: true
+            }
+        })    
+    </script>
+
+
+
+
+</body>
+</html>
