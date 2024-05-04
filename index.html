@@ -9,6 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
 </head>
 <body>
+
+
+<div class="navigation">
+    <h1 class="navButtons">Home</h1>
+    <h1 class="navButtons">Goals</h1>
+    <h1 class="navButtons">Contact</h1>
+</div>
+
+<svg class="burgermenu">
+    <line stroke="black" stroke-width="5" fill="none" x1="10" y1="20" x2="60" y2="20"></line>
+    <line stroke="black" stroke-width="5" fill="none" x1="30" y1="35" x2="60" y2="35"></line>
+    <line stroke="black" stroke-width="5" fill="none" x1="10" y1="50" x2="60" y2="50"></line>
+</svg>
     
 <div class="landingPage">
     <img src="beethree.jpg" class="logobee">
@@ -34,6 +47,45 @@
         padding:0;
         box-sizing: border-box;
         background-color: rgb(245, 248, 235);
+    }
+
+    .navigation {
+        width: 200px;
+        height: 100%;
+        position: fixed;
+        right:0;
+        top:0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        transform: translateX(250px);
+        transition: .8s;
+        background-color: rgb(245, 248, 235);
+        z-index: 100;
+    }
+
+    .navButtons {
+        font-family: "Poetsen One";
+        transition: .5s;
+        font-size: 30px;
+        user-select: none;
+    }
+
+    .burgermenu {
+            width: 70px;
+            height: 70px; 
+            position: fixed;
+            right: 40px;
+            top: 30px;
+            z-index: 10;
+        }
+
+    .navButtons:hover {
+        color: rgb(159, 1, 1);
+        transition: .5s;
+        transform: scale(1.2);
+        cursor: pointer;
     }
 
     .landingPage {
@@ -112,8 +164,8 @@
                 width:200px;
             }
             .logoPath {
-                width: 250px;
-                height: 250px;
+                width: 350px;
+                height: 350px;
             } 
             .lettering {
                 font-size: 30px;
@@ -184,7 +236,16 @@
         })    
     </script>
 
+    <script>
 
+        let menu = document.querySelector(".burgermenu");
+        let navigation = document.querySelector(".navigation");
+
+        menu.addEventListener("click", ()=> navigation.style.transform = "translateX(0px)");
+
+
+
+    </script>
 
 
 </body>
